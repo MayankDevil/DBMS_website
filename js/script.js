@@ -64,7 +64,9 @@ try
             }
         }
     }
-    // -----------------------------------------------------------------
+    // [ Anchor Function ]----------------------------------------------
+    asidelinks.forEach(index => index.onclick = () => nav_close());
+    // [ Hide Function  ]-----------------------------------------------------------------
     let lead = document.querySelectorAll('#aside  .lead');
 
     searchbar.onfocus = () => lead.forEach(i => i.style.display = "none");
