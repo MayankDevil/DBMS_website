@@ -1,0 +1,237 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	use.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-3"> Alter Command </h3>
+
+		<p class="py-3"> Alter is the DDL command of SQL. It is use to update structure on "database object". To modify ,add , drop ,change ,rename etc and use after before clause. </p>
+
+		<h5 class="py-3"> ADD Command </h5>
+
+		<p class="py-3"> Alter command ADD is use to add column in table with datatype or constraint. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> ALERT Table table_name ADD Column column_name datatype constraint; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+1 row in set (0.02 sec)
+
+mysql> ALTER Table personal ADD Column fname char(30) DEFAULT NULL;
+Query OK, 1 row affected (0.17 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> EXPLAIN personal;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| id    | int(11)  | YES  |     | NULL    |       |
+| fname | char(30) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3">  DROP Command </h5>
+
+		<p class="py-3"> Alter command DROP is use to remove column in table with datatype or constraint. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> ALERT Table table_name DROP Column column_name; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> ALTER Table personal DROP Column fname;
+Query OK, 1 row affected (0.11 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> EXPLAIN personal;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+1 row in set (0.02 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3">  CHANGE Command </h5>
+
+		<p class="py-3"> Alter command CHANGE is use to change column in table with datatype or constraint. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> ALERT Table table_name DROP Change old column_name new_column datatype constraint; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> ALTER Table personal CHANGE Column lname sir_name char(30);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> EXPLAIN personal;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| id       | int(11)  | YES  |     | NULL    |       |
+| fname    | char(30) | YES  |     | NULL    |       |
+| sir_name | char(30) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3"> MODIFY Command </h5>
+
+		<p class="py-3"> Alter command MODIFY is use to upgrade column in table with datatype or constraint. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> ALERT Table table_name DROP Change old column_name new_column datatype constraint; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> ALTER Table personal MODIFY sir_name int;
+Query OK, 1 row affected (0.09 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> EXPLAIN personal;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| id       | int(11)  | YES  |     | NULL    |       |
+| fname    | char(30) | YES  |     | NULL    |       |
+| sir_name | int(11)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="after"> AFTER Command </h5>
+
+		<p class="py-3"> AFTER is help to add, column after the first column that we choice. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> ALERT Table table_name ADD column_name datatype AFTER column_name; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> ALTER Table personal ADD lname char(30) AFTER fname;
+Query OK, 1 row affected (0.14 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE personal;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| id    | int(11)  | YES  |     | NULL    |       |
+| fname | char(30) | YES  |     | NULL    |       |
+| lname | char(30) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="rename">  RENAME Command </h5>
+
+		<p class="py-3"> Rename command use to change the name of table and user. It also use with alter command. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> RENAME Table old_name TO new_name; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> RENAME Table personal TO mytable;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESCRIBE mytable;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| id    | int(11)  | YES  |     | NULL    |       |
+| fname | char(30) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> DESCRIBE personal;
+ERROR 1146 (42S02): Table 'test.personal' doesn't exist
+mysql>
+</pre>
+
+		<h6 class="py-3"> Syntax </h6>	
+
+		<mark class="p-1"> ALTER Table old_name RENAME TO new_name; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+		<pre>
+mysql> ALTER Table mytable RENAME TO personal;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESCRIBE personal;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| id    | int(11)  | YES  |     | NULL    |       |
+| fname | char(30) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql>
+</pre>
+	
+	</div>
+
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+  
+</html>
+<!-- THE END -->

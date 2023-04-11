@@ -1,0 +1,114 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	join.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-5"> What is Join? </h3>
+
+        <p class="py-3"> Join is method to display more than one table data combaine with the help of commen relational field. Most of the coder think so it require to be set <a href="constraint.html#primarykey">Primary key</a> and <a href="foreignkey">foreign key</a> Constraint by it not truth. Join require relational field between tables if we can not define relational column query is execute by it one field interect with other tabale all field. </p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT student.fname, mark.total FROM mark, student WHERE student.id = mark.id;
++----------+--------+
+| fname    | total  |
++----------+--------+
+| aman     | 283.00 |
+| geeta    | 228.00 |
+| sheena   |  99.00 |
+| scarlit  | 129.00 |
+| richelle | 169.00 |
+| monika   | 168.00 |
++----------+--------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3">  INNER JOIN </h5>
+
+        <p class="py-3"> The <b>inner join</b> is set select the related column of the both table. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> SELECT table_name.column_name FROM table_name INNER JOIN table_name ON relation_condition;  </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT s.fname,m.total FROM mark AS m INNER JOIN student AS s ON s.id = m.id;
++----------+--------+
+| fname    | total  |
++----------+--------+
+| aman     | 283.00 |
+| geeta    | 228.00 |
+| sheena   |  99.00 |
+| scarlit  | 129.00 |
+| richelle | 169.00 |
+| monika   | 168.00 |
++----------+--------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+        <h5 class="py-3">  CROSS JOIN </h5>
+
+		<p class="py-3"> The <b>cross join</b> is set select the not related column of the both table. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> SELECT table_name.column_name FROM table_name CROSS JOIN table_name ON relation_condition </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT s.fname,m.m1,m.m2,m.m3 FROM mark AS m CROSS JOIN student AS s ON s.id = m.id;
++----------+------+------+------+
+| fname    | m1   | m2   | m3   |
++----------+------+------+------+
+| aman     |   99 |   93 |   91 |
+| geeta    |   69 |   89 |   70 |
+| sheena   |   10 |   39 |   50 |
+| scarlit  |   40 |   59 |   30 |
+| richelle |   60 |   69 |   70 |
+| monika   |   60 |   69 |   99 |
++----------+------+------+------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+	</div>
+
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+  
+</html>
+<!-- THE END -->

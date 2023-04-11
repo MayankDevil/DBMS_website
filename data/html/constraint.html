@@ -1,0 +1,232 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	constraint.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-5"> What is Constraint? </h3>
+		
+		<p class="py-3"> Constraint is the set of ristriction upon table column like not be null data set and not be duplicate contion to checks etc. </p>
+
+		<h5 class="py-3" id="primarykey">  Primary Constraint </h5>
+
+		<p class="py-3"> Primary key is master key that make table to <b>MASTER TABLE</b>. If any field have primary so it mean that value not be set <b>NULL</b> and <b>DUPLICATE</b>. </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1"> alter_add_query Constraint key_name Primary key(id); </mark>
+		
+        <h6 class="py-3"> Example </h6>
+		
+<pre>
+mysql> CREATE Table t1(
+	-> id int primary key
+	-> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> CREATE Table t2(
+	-> id int,
+	-> Constraint pk Primary Key(id)
+	-> );
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> ALTER Table t3 ADD Constraint pk Primary key(primary_column);
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="foreignkey">  Foreign Constraint </h5>
+
+		<p class="py-3"> Foreign key is set table as Secondary Table it exmple like mark table of student. It is check column data always insert that present in that primary field. </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1"> alter_add_query Constraint Foreign Key(foriegn_column) REFERENCES table_name(primary_column); </mark>
+		
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> CREATE TABLE t4(
+	-> id int references t1(id)
+	-> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE t5(
+	-> id int,
+	-> Constraint fk Foreign key(id) references t2(id)
+	-> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="unique">  Unique Constraint </h5>
+
+		<p class="py-3"> The unique constraint is set column have not be store duplicate data. if you can select unique data from table you can use <a href="select.html#distinct">distinct</a>. </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1"> alter_add_query Column column_name datatype UNIQUE; </mark>
+		
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> CREATE Table rollno(
+	-> rollno int unique
+	-> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> ALTER Table bill ADD Column bill_id int UNIQUE;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="notnull">  NOt NULL Constraint </h5>
+
+		<p class="py-3"> The NOT NULL Constraint is set column data have be not null if you can entity new row. With deal to not null you can use <a href="select.html#is">is</a> Operator. </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1"> alter_add_query Column column_name datatype NOT NULL; </mark>
+		
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> CREATE Table personal(
+-> fname char(30) NOT NULL
+-> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> ALTER Table personal ADD Column lname char(30) NOT NULL;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+		<hr>
+		
+		<h5 class="py-3" id="null">  NULL Constraint </h5>
+
+		<p class="py-3"> The <b>NULL</b> Constraint is set you can insert it data is null (void). With deal to null you can use <a href="select.html#is">is</a> Operator. </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1"> alter_add_query Column column_name datatype NULL; </mark>
+		
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> CREATE Table personal(
+-> fname char(30) NULL
+-> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> ALTER Table personal ADD Column lname char(30) NULL;
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+		<hr>
+		
+		<h5 class="py-3" id="check">  CHECK Constraint </h5>
+
+		<p class="py-3"> The <b>Check</b> Constraint is used for set condition inside the column. </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1"> alter_add_query Column column_name datatype CHECK(condition); </mark>
+		
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> CREATE Table sex(
+-> gender char(1) CHECK(in('T','M','F'))
+-> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> ALTER Table personal ADD Column m1 int CHECK(m1 > 100);
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+		<hr>
+		
+		<h5 class="py-3" id="default">  Default Constraint </h5>
+
+		<p class="py-3"> The <b>default</b> Constraint is use to set default value of the  column like if user not enter last_name it set default NULL. </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1">  </mark>
+		
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> CREATE Table departement(
+-> student_Class char('40') DEFAULT 'BCA'
+-> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> ALTER Table personal ADD Column status char(30) default 'bachlor';
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+<!--
+
+ Primary Constraint 
+ Foreign Constraint 
+ Unique Contstraint 
+ Not Null Constraint 
+ Null Constraint 
+ Check Constraint 
+ Default Constraint 
+	
+-->
+
+	</div>
+	
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+
+</html>
+<!-- THE END -->

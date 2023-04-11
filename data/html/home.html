@@ -1,0 +1,214 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	home.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-5"> What is the DBMS? </h3>
+
+		<p class="py-3"> DBMS stand for DataBase Manuplation System. It is simply mean DBMS is a collection of package to help mange or maintain or store database. DBMS is system which is used to manage the database. </p>
+
+		<h5 class="py-3">  Basic Concepts and Definitions </h5>
+
+		<p class="py-3"> Data is a collection of raw facts which have not been processed to reveal useful information. Information is produced by processing a data. </p>
+
+		<div class="row py-sm-5 py-3 d-flex align-items-center text-center" id="basic">
+		
+			<div class="col d-sm-block d-none"></div>
+			<div class="col-3 p-sm-2 p-1 alert alert-success"> Data </div>
+			<div class="col pt-2 ent"> &#8407; </div>
+			<div class="col-3  p-sm-2 p-1 alert alert-success"> Processing </div>
+			<div class="col pt-2 ent"> &#8407; </div>
+			<div class="col-3  p-sm-2 p-1 alert alert-success"> Information </div>
+			<div class="col d-sm-block d-none"></div>
+		
+		</div>
+
+		<h6> Example </h6>
+
+		<p class="p-3 text-lgreen bg-dark rounded"> simple daily life example school Database that inside student, teacher, mark etc data. We are mantain marks data for processed to get result information of student. </p>
+
+		<hr>
+
+		<h5 class="py-3" id="scheme"> Scheme Of DBMS </h5>
+		
+		<p class="py-3"> DBMS a collection of programs that enables users to create, maintain and use a database. It enables creation of a repository of data that is defined once and then accessed by different users as per their requirements. Thus there is a single repository of data which is accessed by all the application programs.  </p>
+		
+		<div class="row text-center m-5" id="Path">
+
+			<div class="col-12 mb-0 alert alert-primary"> Application </div>
+
+			<div class="col mb-3 ent"> &UpArrowDownArrow; </div>
+			
+			<div class="col-12 mb-0 alert alert-primary"> DBMS </div>
+
+			<div class="col mb-3 ent"> &UpArrowDownArrow; </div>
+			
+			<div class="col-12 mb-0 alert alert-primary"> DataBase </div>
+
+		</div>
+		
+		<h5 class="py-3" id="users"> Users of DBMS </h5>
+
+		<ol class="py-3">
+			<li> <b> End User </b> They simply use the DBMS to get their task done.  </li>
+			<li> <b> Application Programmers </b> Application programmes write application programs to interact with the database. </li>
+			<li> <b> Database Administrator (DBA) </b> The DBA is responsible for authoring access, monitoring its use, providing technical support, acquiring software and hardware resources. </li>
+			<li> <b> System Analyst </b> Asystem analyst plays a major role in the database design and all the technical, economic and feasibility aspects. </li>
+		</ol>
+
+		<hr>
+		
+		<h4 class="py-3" id="rules"> Relational Database Management Systems </h4>
+
+		<p class="py-3"> Since 1970 <b> Dr.Edgar F.Codd </b> had present Relational Model of Database which contain 12 rule that we know today <i> 12 Codd Rules</i>.  </p>
+		
+		<div class="p-1">
+			<details>
+				<summary class="alert alert-info"> Information Rule </summary>
+				<div class="p-3"> The data stored in a database, may it be user data or metadata, must be a value of some table cell. Everything in a database must be stored in a table format. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Guaranted Access Rule </summary>
+				<div class="p-3"> Every single data element(value) is guaranteed to be accessible logically with a combination of table_name, primary_key (row value), and attribute_name (column value). No other means, such a pointers, can be used to access data. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Systematic Treatment of Null Values </summary>
+				<div class="p-3"> The <b>NULLL</b> vlaues in database must be given a systematic and uniform treatment. This is a very important rule because a NULL can be inerpreted as one the following - data is missing, data is not know, or data is not applicable. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Active Online Catalog </summary>
+				<div class="p-3"> The structure desciption of the entire database must be stored in an online catalog, known as <b> data dictionary </b>, which can be accessed by authorized users. Users can use the same query language to access the catalog which they use to access the database itselef. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Comprehensive Data Sub-Language Rule </summary>
+				<div class="p-3"> A database can only be accessed using a language having linear systax that supports data definition, data manipulation, and transtion management operations. This language can be used directly or by means of some application. If the database allows access to data without any help of this lanaguage. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> View Updating Rule </summary>
+				<div class="p-3"> All the views of a database, which can theoretically be updated, must also be updatable by the system. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Hight-Level Insert,Update, and Delete Rule </summary>
+				<div class="p-3"> A database must support high-level insertion, updation, and deletion. This must not be limited to a single row, that is, it must also support union, intersection and minus operations to yield sets of data records. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Physical Data Independence </summary>
+				<div class="p-3"> The data sored in a database must be independent of the appplications that access the database. Any change in the physical structure of a database must not have any impact on how the data is being accessed by external applications. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Logical Data Independence </summary>
+				<div class="p-3"> The logical data in a database must be indepedent of its user's view (application). Any change in logical data must not affect the application using it. For example, if two tables are merged or one is split into two different tables, there should be no impact or change on the user application. This is one of the most difficult rule to apply. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Integrity Independence </summary>
+				<div class="p-3"> A database must be independent of the application that user it. All its integrity constrainsts can be independently modified without the need of any change in the application. This rule makes a database independent of the front-end application and its interface. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Distribution Independence </summary>
+				<div class="p-3"> The end-user must not be able to see tha the data is distributed over various locaions. Uers should always get the impression that the data is located at one site only. This rule has been regarded as he foundation of distributed database systems. </div>
+			</details>
+			<details>
+				<summary class="alert alert-info"> Non-Subversion Rule </summary>
+				<div class="p-3"> If a system has an interface that provides access to low-level records. then the interface must not be able to subvert the system and bypass security and integrity constraints. </div>
+			</details>
+		</div>
+
+		<hr> 
+
+		<h5 class="py-3" id="command"> SQL (Structure Query Language) </h5>
+
+		<ul class="border-left border-dark">
+
+			<li class=""> DDL ( Data Definition Language ) </li>
+
+			<ul class="border-left border-dark">
+				<li class=""> <a href="#">Create</a> </li>
+				<li class=""> <a href="#">Alter</a> </li>
+				<li class=""> <a href="#">Drop</a> </li>
+				<li class=""> <a href="#">Truncate</a> </li>
+				<li class=""> <a href="#">Rename</a> </li>
+			</ul>
+
+			<li class=""> DML ( Data Manipulation Language ) </li>
+
+			<ul class="border-left border-dark">
+				<li class=""> <a href="#">Insert</a> </li>
+				<li class=""> <a href="#">Update</a> </li>
+				<li class=""> <a href="#">Delete</a> </li>
+				<li class=""> <a href="#">Merge</a> </li>
+			</ul>
+
+			<li class=""> DQL ( Data Query Language ) </li>
+			
+			<ul class="border-left border-dark">
+				<li class=""> <a href="#">Select</a> </li>
+			</ul>
+			
+			<li class=""> TCL ( Transaction Control Language ) </li>
+			
+			<ul class="border-left border-dark">
+				<li class=""> <a href="#">Commit</a> </li>
+				<li class=""> <a href="#">Rollback</a> </li>
+				<li class=""> <a href="#">Save Point</a> </li>
+			</ul>
+			
+			<li class=""> DCL ( Data Control Language ) </li>
+
+			<ul class="border-left border-dark">
+				<li class=""> <a href="#">Grant</a> </li>
+				<li class=""> <a href="#">Revoke</a> </li>
+			</ul>
+		</ul>
+		
+<pre>
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.1.30-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+
+mysql> /*
+mysql> 		mysql multiple line comment
+mysql> */
+mysql> -- mysql single line comment
+mysql>
+</pre>
+
+		<p class="py-5"> According to code rules we are requirements a perticular language that deal with relation database and it some for all relation database. </p>
+
+
+		<!-- <img src="../pic/sql.png" class="w-100 h-100 py-3"> -->
+
+	</div>
+
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+  
+</html>
+<!-- THE END -->

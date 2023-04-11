@@ -1,0 +1,193 @@
+/*
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	index.html
+*/
+:root
+{
+    --lgreen:#b1dfbb;
+    --lred:#ed969e;
+}
+.text-lred
+{
+    color:var(--lred);
+}
+.text-lgreen
+{
+    color:var(--lgreen);
+}
+::-webkit-scrollbar
+{
+    width:0.5rem;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb
+{
+    background: var(--dark);
+    border-radius: 5px;
+}
+body
+{
+    overflow: auto;
+}
+/* HEADER */
+#header
+{
+    height: 7vh;
+}
+/* CONTAINER */
+#container
+{
+    height: 93vh;
+}
+/* ASIDE */
+#aside
+{
+    height: 93vh;
+    overflow: scroll;
+}
+#aside a
+{
+    display:block;
+    padding: 1rem 1rem;
+    text-decoration: none;
+}
+#aside a:hover,
+#aside a:active
+{
+    color:var(--dark);
+    background:var(--light);
+}
+/* #searchbar:focus ~ .lead
+{
+    color:#ed969e;
+} */
+/* FRAME */
+#frame
+{
+    height: 93vh;
+    overflow: scroll;
+    border:none;
+}
+/* PAGES */
+.container-fluid
+{
+    border-bottom: 1px dotted var(--warning);
+}
+.ent
+{
+	font-size:3rem;
+}
+li
+{
+    line-height: 2rem;
+}
+li::marker
+{
+    color:var(--primary);
+}
+summary
+{
+    margin:0.5rem auto;
+    list-style: none;
+    line-height: 2rem;
+}
+dt
+{
+    font-weight:normal;
+}
+pre
+{
+    padding: 1rem;
+    color:var(--lred);
+    background: var(--dark);
+    box-shadow:3px 5px 5px var(--secondary);
+    border-radius: 5px;
+}
+mark
+{
+    display: block;
+    color:#155724;
+    background: var(--light);
+}
+/* pl frame */
+.pl
+{
+    color:var(--lgreen);
+    /* background: var(--light); */
+}
+/* ENEITY */
+#strongentity
+{
+    padding: 1rem;
+    text-align: center;
+    color:var(--primary);
+    border:1px solid var(--primary);
+}
+#weakentity
+{
+    padding: 1rem;
+    text-align: center;
+    color:var(--danger);
+    border:3px double var(--danger);
+}
+#simplecol
+{
+    border-radius: 50px;
+}
+#keycol
+{
+    text-decoration: underline;
+    border-radius: 50px;
+}
+#multivaluedcol
+{
+    border:3px double var(--info);
+    border-radius: 50px;
+}
+#compositecol
+{
+    border:1px solid var(--dark);
+    border-radius: 50px;
+}
+#drivedcol
+{
+    border:3px dotted var(--warning);
+    border-radius: 50px;
+}
+#oto
+{
+    color:var(--warning);
+}
+#otm
+{
+    color:var(--info);
+}
+#mto
+{
+    color:var(--danger);
+}
+#mtm
+{
+    color:var(--info);
+}
+/* SCREEN : 576PX */
+@media screen and (max-width:576PX)
+{
+    #container > .container > .row
+    {
+        position: relative;
+    }
+    #aside
+    {
+        width: 100% !important;
+        position: absolute;
+        z-index:50;
+    }
+    .ent
+    {
+        font:1rem;
+    }
+}
+/* THE END */

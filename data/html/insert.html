@@ -1,0 +1,110 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	insert.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-3"> How to Insert Data? </h3>
+
+		<p class="py-3"> his command is used to insert a tuple in a relation. We must specify the name of the relation in which tuple is to be inserted and the values. The values must be in the same order as specified during the Create Table command. </p>
+
+		<h5 class="py-3"> Insert all column & single row </h5>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> INSERT INTO table_name VALUES(data1,data2,...); </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> INSERT INTO employee values (1023,'Kalid',null);
+Query OK, 1 row affected (0.05 sec)
+</pre>
+
+        <h5 class="py-3"> insert all column & multiple row </h5>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> INSERT INTO table_name VALUES(data1,...), (data2,...), ... ; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> INSERT INTO college values
+-> (1024,'Kajal',null),
+-> (1025,'Komal',null),
+-> (1026,'Rohit','M');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+        <h5 class="py-3"> Insert specified column & single row </h5>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> INSERT INTO table_name(field1,field2,...) VALUES(data1,data2,...); </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> INSERT INTO employee(fname,id,gender) values
+-> ('Nisha',1027,'F');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>
+</pre>
+
+        <h5 class="py-3" id="mrow"> insert specified column & multiple row </h5>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> INSERT INTO table_name(field1,field2,...) VALUES(data1,...), (data2,...), ... ; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> INSERT INTO college values(fname,id,gender)
+-> ('Mala',1028,null),
+-> ('Pooja',1029,'F');
+-> ('Rohan',1030,'M');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>
+</pre>
+
+        <p class="py-3"> Note that the values entered are ordered with respect to the attributes mentioned. If an attribute value is not explicitly specified its DEFAULT value is used. If DEFAULT value is also not specified then NULL value is used. </p>
+
+	</div>
+
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+  
+</html>
+<!-- THE END -->

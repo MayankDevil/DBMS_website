@@ -1,0 +1,555 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	select.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-3"> Select Command </h3>
+
+		<h5 class="py-3">  Select all column </h5>
+
+		<p class="py-3"> select is the <a href="home.html#sql"> DDL </a> command. The SELECT Command is used to retrieve information from a database. There are various ways in which the SELECT command can be used. Syntax of SELECT Command is as follows: </p>
+
+        <h6 class="py-3"> Syntax :- </h6>
+
+        <mark class="p-1"> SELECT * FROM table_name; </mark>
+
+		
+        <h6 class="py-3"> Example </h6>
+		
+<pre>
+mysql> SELECT * FROM student;
++----+---------+--------+--------+
+| id | fname   | lname  | gender |
++----+---------+--------+--------+
+|  1 | Ram     | Singh  | NULL   |
+|  2 | Krishan | Kumar  | NULL   |
+|  3 | Mohit   | Kumar  | NULL   |
+|  4 | Savita  | Sharma | F      |
++----+---------+--------+--------+
+4 rows in set (0.01 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3">  Select specific column </h5>
+
+		<p class="py-3"> The basic structure of a SELECT command comprises of the keyword SELECT followed by the attribute list (separated by comma (,)) you want to select, followed by FROM clause followed by the table name and lastly an optional WHERE clause which is followed by a condition that can be a Boolean expression or another SELECT command that identifies the tuples to be selected. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> SELECT field_name,field_name, ... FROM table_name; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT fname,lname FROM student;
++---------+--------+
+| fname   | lname  |
++---------+--------+
+| Ram     | Singh  |
+| Krishan | Kumar  |
+| Mohit   | Kumar  |
+| Savita  | Sharma |
++---------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="alias"> ALIAS </h5>
+
+		<p class="py-3"> alias is <b>as</b> key work that is used for set other name of the column feild and table also. Alias also used in <a href="create.html#createalias"> view </a> </p>
+
+		<h6 class="py-3"> Syntax :- </h6>
+
+		<mark class="p-1"> SELECT column AS set_column_name FROM table_name; </mark>
+
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT price AS rate FROM car;
++----------+
+| rate     |
++----------+
+| 20000.00 |
+| 15000.00 |
+| 40000.00 |
+| 40000.00 |
+| 40000.00 |
++----------+
+5 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="where">  WHERE Clause </h5>
+
+		<p class="py-3"> where is a clause that is option part of query. It is used for set condition in query. </p>
+		
+		<h6 class="py-3"> Syntax </h6>
+		
+        <mark class="p-1"> select_query [ WHERE condition ]; </mark>
+		
+        <h6 class="py-3"> Example </h6>
+		
+<pre>
+mysql> SELECT fname FROM student WHERE id > 2;
++--------+
+| fname  |
++--------+
+| Mohit  |
+| Savita |
++--------+
+2 rows in set (0.03 sec)
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="order"> ORDER Clause </h5>
+
+		<p class="py-3"> ORDER clause is help to set data in format with the respect selected column. You can also set <a href="#limit">limit</a> or data that you can select. Even you can set <a href="#asc"> asc </a>and<a href="#desc">desc</a> order. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> select_query [ ORDER BY column_name ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT * FROM mytable ORDER BY id;
++------+---------+--------+
+| id   | fname   | lname  |
++------+---------+--------+
+|    1 | gutam   | budha  |
+|    2 | octavia | NULL   |
+|    5 | hattori | kanjo  |
+|    7 | peter   | parker |
++------+---------+--------+
+4 rows in set (0.01 sec)
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="limit"> Set LIMIT </h5>
+
+		<p class="py-3"> with the used to <b>limit</b> you can set quantity of data. Simple you can set number of data select in query if they present. As well as you can set how many number that you can select limit that called <b>offset</b> </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> select_query [ ORDER BY column_name LIMIT number ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT * FROM mytable LIMIT 1;
++------+-------+-------+
+| id   | fname | lname |
++------+-------+-------+
+|    1 | gutam | budha |
++------+-------+-------+
+1 row in set (0.00 sec)
+
+mysql> /* offset use before limit */
+mysql> SELECT * FROM mytable ORDER BY FNAME LIMIT 2,2;
++------+---------+--------+
+| id   | fname   | lname  |
++------+---------+--------+
+|    2 | octavia | NULL   |
+|    7 | peter   | parker |
++------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="asc"> ASC ORDER </h5>
+
+		<p class="p-3"> <b>asc</b> used to format data in asccending order it is default. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> select_query [ ORDER BY column_name ASC ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT * FROM mytable ASC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 1
+mysql> SELECT * FROM mytable ORDER BY id ASC;
++------+---------+--------+
+| id   | fname   | lname  |
++------+---------+--------+
+|    1 | gutam   | budha  |
+|    2 | octavia | NULL   |
+|    5 | hattori | kanjo  |
+|    7 | peter   | parker |
++------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="desc"> DESC ORDER </h5>
+
+		<p class="p-3"> <b>desc</b> used to format data in desccending order it you can set. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> select_query [ ORDER BY column_name DESC ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT * FROM mytable DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC' at line 1
+mysql> SELECT * FROM mytable ORDER BY id DESC;
++------+---------+--------+
+| id   | fname   | lname  |
++------+---------+--------+
+|    7 | peter   | parker |
+|    5 | hattori | kanjo  |
+|    2 | octavia | NULL   |
+|    1 | gutam   | budha  |
++------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="group"> GROUP Clause </h5>
+
+		<p class="py-3"> The <b>group</b> clause is used to get concatenated values of expressions with more than one result per column. Meaning, there are many rows to be selected back for one column such as Name(1):Score(*). You can also use inside <a href="#">function</a> </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> select_query [ GROUP BY column_name ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT * FROM address ORDER BY id;
++------+------------+
+| id   | city       |
++------+------------+
+|    1 | chandigarh |
+|    2 | agra       |
+|    3 | delhi      |
+|    4 | delhi      |
+|    5 | agra       |
+|    6 | agra       |
+|    7 | delhi      |
+|    9 | delhi      |
+|   10 | agra       |
+|   11 | chanigarh  |
+|   12 | delhi      |
++------+------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT city FROM address GROUP BY city;
++------------+
+| CITY       |
++------------+
+| agra       |
+| chandigarh |
+| chanigarh  |
+| delhi      |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT city,count(id) as 'Number_Of_employee' FROM address GROUP BY city;
++------------+--------------------+
+| city       | Number_Of_employee |
++------------+--------------------+
+| agra       |                  4 |
+| chandigarh |                  1 |
+| chanigarh  |                  1 |
+| delhi      |                  5 |
++------------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="having"> HAVING Clause </h5>
+
+		<p class="py-3"> where is a clause that is option part of query. It is used for set condition in query. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> SELECT fields FROM table_name [ GROUP BY column_name HAVING condition ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="distinct">  DISTINCT Select unique column </h5>
+
+		<p class="py-3"> The <b>distinct</b> is used to <i>select unique data</i> between mutliple data. It is help to remove duplicate data from you selection query. </p>
+
+		<h6 class="py-3"> Syntax :- </h6>
+
+		<mark class="p-1"> SELECT DISTINCT FROM table_name; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT DISTINCT price FROM CAR;
++----------+
+| price    |
++----------+
+| 20000.00 |
+| 15000.00 |
+| 40000.00 |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT price FROM CAR;
++----------+
+| price    |
++----------+
+| 20000.00 |
+| 15000.00 |
+| 40000.00 |
+| 40000.00 |
+| 40000.00 |
++----------+
+5 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<hr>
+        
+		<h5 class="py-3" id="in"> IN </h5>
+
+		<p class="py-3"> <b>in</b> function is use to compare mutliple values of columns it is very use full function then we need to compare multiple value by same field. </p>
+
+		<h6 class="py-3"> Syntax :- </h6>
+
+		<mark class="p-1"> select_query [ WHERE column_name in( data1,data2,... ) ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT fname FROM mytable WHERE id = 1 or id = 2 or id = 9 or id = 5;
++---------+
+| fname   |
++---------+
+| gutam   |
+| hattori |
+| octavia |
+| jan     |
++---------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT fname FROM mytable WHERE id in(1,2,9,5);
++---------+
+| fname   |
++---------+
+| gutam   |
+| hattori |
+| octavia |
+| jan     |
++---------+
+4 rows in set (0.00 sec)
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="is"> IS </h5>
+
+		<p class="py-3"> May be select or deal with null value?. <a href="constraint.html#null">NULL</a> <b>is</b> are made to work each other, Mean you can deal with null values use <b>is</b>.  </p>
+
+		<h6 class="py-3"> Syntax :- </h6>
+
+		<mark class="p-1"> select_query [ WHERE column_name IS NULL ]; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT fname FROM mytable WHERE lname = NULL;
+Empty set (0.00 sec)
+
+mysql> SELECT fname FROM mytable WHERE lname IS NULL;
++---------+
+| fname   |
++---------+
+| octavia |
+| pooja   |
+| aman    |
++---------+
+3 rows in set (0.00 sec)
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="not"> NOT </h5>
+
+		<p class="py-3"> NOT is use to conver result in negetive mean if true so false and false so true. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> select_query [ WHERE NOT contition ]; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT fname FROM mytable WHERE lname IS NOT NULL;
++---------+
+| fname   |
++---------+
+| gutam   |
+| hattori |
+| peter   |
+| NULL    |
+| monika  |
+| jan     |
++---------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<hr>
+
+		<h5 class="py-3" id="like"> LIKE </h5>
+
+		<p class="py-3"> The <b>like</b> operator is used for deal with string it is very good for selecting to target string in query. </p>
+
+		<ul class="p-3">
+			<li> <b> like 'aman' </b> is require to search full string </li>
+			<li> <b> like '%man' </b> if you don't know before charaters </li>
+			<li> <b> like '_man' </b> is you don't know before single character </li>
+			<li> <b> like '%man' </b> if you don't know after charaters </li>
+			<li> <b> like '_man' </b> is you don't know after single character </li>
+			<li> <b> like 'w%n' </b> if you forget between characters </li>
+			<li> <b> like 'wo_an' </b> if you forget between single character </li>
+		</ul>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> select_query [ WHERE column LIKE 'value' ]; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> select * from mytable;
++------+---------+-------------+
+| id   | fname   | lname       |
++------+---------+-------------+
+|    1 | gutam   | budha       |
+|    5 | hattori | kanjo       |
+|    2 | octavia | NULL        |
+|    7 | peter   | parker      |
+|    3 | pooja   | NULL        |
+|    4 | aman    | NULL        |
+|    6 | NULL    | port        |
+|    8 | monika  | gustamridey |
+|    9 | jan     | mhod        |
++------+---------+-------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT id FROM mytable WHERE fname like 'aman';
++------+
+| id   |
++------+
+|    4 |
++------+
+1 row in set (0.00 sec)
+
+mysql> SELECT id FROM mytable WHERE fname like 'p%';
++------+
+| id   |
++------+
+|    7 |
+|    3 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT id FROM mytable WHERE fname like '%a';
++------+
+| id   |
++------+
+|    2 |
+|    3 |
+|    8 |
++------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT id FROM mytable WHERE fname like '_an' or  'm__d';
++------+
+| id   |
++------+
+|    9 |
++------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> SELECT fname FROM mytable WHERE fname like '_c%';
++---------+
+| fname   |
++---------+
+| octavia |
++---------+
+1 row in set (0.00 sec)
+
+mysql> SELECT fname FROM mytable WHERE fname like '%a%';
++---------+
+| fname   |
++---------+
+| gutam   |
+| hattori |
+| octavia |
+| pooja   |
+| aman    |
+| monika  |
+| jan     |
++---------+
+7 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+	</div>
+	
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+
+</html>
+<!-- THE END -->

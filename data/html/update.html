@@ -1,0 +1,277 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	update.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-3"> How to Update Data? </h3>
+
+		<h5 class="py-3">  UPDATE SET Command </h5>
+
+		<p class="py-3"> Update is DML command. IT is most useful and important command that help to update data mean reset the data in database table. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> UPDATE table_name SET column_name = data; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT * FROM mark;
++------+------+------+------+-------+
+| id   | m1   | m2   | m3   | total |
++------+------+------+------+-------+
+|    1 |   25 |   23 |   22 |  NULL |
+|    2 |   99 |   33 |   42 |  NULL |
+|    3 |   77 |   64 |   52 |  NULL |
+|    4 |   97 |   24 |   12 |  NULL |
+|    5 |   37 |   24 |   10 |  NULL |
+|    6 |   87 |   74 |   80 |  NULL |
++------+------+------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql> UPDATE mark SET total = m1 + m2 + m3;
+Query OK, 5 rows affected (0.05 sec)
+Rows matched: 6  Changed: 5  Warnings: 0
+
+mysql> SELECT * FROM mark;
++------+------+------+------+-------+
+| id   | m1   | m2   | m3   | total |
++------+------+------+------+-------+
+|    1 |   25 |   23 |   22 |    70 |
+|    2 |   99 |   33 |   42 |   174 |
+|    3 |   77 |   64 |   52 |   193 |
+|    4 |   97 |   24 |   12 |   133 |
+|    5 |   37 |   24 |   10 |    71 |
+|    6 |   87 |   74 |   80 |   241 |
++------+------+------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="and"> AND Operator </h5>
+
+		<p class="py-3"> The <b>and</b> operator is used with <a href="select.html#where"> where clause </a>. It is execute then <i> both side condition is true </i> else never work. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> update_query WHERE condition1 AND condition2; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
++------+------+------+------+--------+
+| id   | m1   | m2   | m3   | total  |
++------+------+------+------+--------+
+|    1 |   99 |   93 |   91 | 283.00 |
+|    2 |   69 |   89 |   70 | 228.00 |
+|    3 |   10 |   39 |   50 |  99.00 |
+|    4 |   40 |   59 |   30 | 129.00 |
+|    5 |   60 |   39 |   70 | 169.00 |
+|    6 |   60 |    9 |   99 | 168.00 |
+|    7 |   60 |   45 |   59 | 164.00 |
++------+------+------+------+--------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE mark SET m2 = m2 + 30 WHERE  m1 = 60 AND m2 = 9;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM mark;
++------+------+------+------+--------+
+| id   | m1   | m2   | m3   | total  |
++------+------+------+------+--------+
+|    1 |   99 |   93 |   91 | 283.00 |
+|    2 |   69 |   89 |   70 | 228.00 |
+|    3 |   10 |   39 |   50 |  99.00 |
+|    4 |   40 |   59 |   30 | 129.00 |
+|    5 |   60 |   39 |   70 | 169.00 |
+|    6 |   60 |   39 |   99 | 168.00 |
+|    7 |   60 |   45 |   59 | 164.00 |
++------+------+------+------+--------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE mark SET m2 = m2 + 30 WHERE  m1 = 60 AND m2 = 9;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="or"> OR Operator </h5>
+
+		<p class="py-3"> The <b>or</b> operator is used with <a href="select.html#where"> where clause </a>. It is execute then <i> if any one side condition is true </i> else never work. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> update_query WHERE condition1 OR condition2; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> UPDATE mark SET m2 = m2 + 30 WHERE  m1 = 60 OR m2 = 9;
+Query OK, 3 rows affected (0.03 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> SELECT * FROM mark;
++------+------+------+------+--------+
+| id   | m1   | m2   | m3   | total  |
++------+------+------+------+--------+
+|    1 |   99 |   93 |   91 | 283.00 |
+|    2 |   69 |   89 |   70 | 228.00 |
+|    3 |   10 |   39 |   50 |  99.00 |
+|    4 |   40 |   59 |   30 | 129.00 |
+|    5 |   60 |   69 |   70 | 169.00 |
+|    6 |   60 |   69 |   99 | 168.00 |
+|    7 |   60 |   75 |   59 | 164.00 |
++------+------+------+------+--------+
+7 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+		<h5 class="py-3" id="between"> BETWEEN Operator </h5>
+
+		<p class="py-3"> The <b>between</b> operator is used with <a href="#and"> and operator </a>. it is use to find bweteen value. </p>
+
+		<h6 class="py-3"> Syntax </h6>
+
+		<mark class="p-1"> update_query WHERE BEWTEEN condition1 AND condition2; </mark>
+
+		<h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> SELECT * FROM student;
++----+----------+------------+
+| id | fname    | lname      |
++----+----------+------------+
+|  1 | aman     | kumna      |
+|  2 | geeta    | sharma     |
+|  3 | sheena   | ryder      |
+|  4 | scarlit  | scandal    |
+|  5 | richelle | ryan       |
+|  6 | monika   | gastamride |
++----+----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> UPDATE student SET lname = NULL WHERE id BETWEEN 3 AND 6
+	-> ;
+Query OK, 4 rows affected (0.04 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> SELECT * FROM student;
++----+----------+--------+
+| id | fname    | lname  |
++----+----------+--------+
+|  1 | aman     | kumna  |
+|  2 | geeta    | sharma |
+|  3 | sheena   | NULL   |
+|  4 | scarlit  | NULL   |
+|  5 | richelle | NULL   |
+|  6 | monika   | NULL   |
++----+----------+--------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+        <hr>
+
+        <h5 class="py-3" id="addition"> Addition Operator </h5>
+
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> UPDATE table_name SET column_name = data WHERE data1 <b>+</b> data1; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> UPDATE mark SET m3 = 70 WHERE id = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE mark SET total = m1 + m2 + m
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 6  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM mark;
++------+------+------+------+-------+
+| id   | m1   | m2   | m3   | total |
++------+------+------+------+-------+
+|    1 |   25 |   23 |   70 |   118 |
+|    2 |   99 |   33 |   42 |   174 |
+|    3 |   77 |   64 |   52 |   193 |
+|    4 |   97 |   24 |   12 |   133 |
+|    5 |   37 |   24 |   10 |    71 |
+|    6 |   87 |   74 |   80 |   241 |
++------+------+------+------+-------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+        <hr>
+
+        <h5 class="py-3" id=""> GREATER THEN Operator </h5>
+
+		<p class="py-3"> NOT is use to conver result in negetive mean if true so false and false so true. </p>
+
+        <h6 class="py-3"> Syntax </h6>
+
+        <mark class="p-1"> update_query [ WHERE column > value ]; </mark>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre>
+mysql> UPDATE mark SET result = 'PASS' WHERE not percentage > 40;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM mark;
++------+------+------+------+-------+------------+--------+
+| id   | m1   | m2   | m3   | total | percentage | result |
++------+------+------+------+-------+------------+--------+
+|    1 |   25 |   23 |   70 |   118 |      39.33 | PASS   |
+|    2 |   99 |   33 |   42 |   174 |      58.00 | PASS   |
+|    3 |   77 |   64 |   52 |   193 |      64.33 | PASS   |
+|    4 |   97 |   24 |   12 |   133 |      44.33 | PASS   |
+|    5 |   37 |   24 |   10 |    71 |      23.67 | PASS   |
+|    6 |   87 |   74 |   80 |   241 |      80.33 | PASS   |
++------+------+------+------+-------+------------+--------+
+6 rows in set (0.00 sec)
+
+mysql>
+</pre>
+
+	</div>
+
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+  
+</html>
+<!-- THE END -->

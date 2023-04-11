@@ -1,0 +1,500 @@
+<!doctype html>
+<!--
+-	Project 2 'dbms tutorial'
+-	All Right Rerserved
+-	Designed by Mayank
+-	use.html
+-->
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Mayank</title>
+	<!-- { style } -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<!-- ( offnline ) -->
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	
+</head>
+  
+<body>
+	<!-- { container } -->
+	<div class="container-fluid">
+	
+		<h3 class="py-3"> What is PL/SQL? </h3>
+
+		<p class="py-3"> It is Procedural Language that we can set package of procedure or function to executing multiple line of query or handle exeute time error to stope server to crash. It is simple use BEGIN /* query */ END; better for you practicle with this offical side of orcale <a href="https:livesql.orcale.com">https:livesql.orcale.com</a> </p>
+		
+        <h6 class="py-3"> Example </h6>
+		
+<pre class="pl">
+/*
+--	simple write query
+*/
+BEGIN
+	dbms_output.put_line(' Welcome to PL/SQL ');
+END;
+</pre>
+		
+        <h5 class="py-3" id="statement"> statement </h5>
+		
+		<p class="py-3"> You may be set variable or done any opertion in plsql and write operation like plus, minus, guda, bhag adi chige. Ap kar sakte hai.  </p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+	a number := 1;
+	b number := 2;
+	c number;
+	s varchar := ' sum of number is ';
+BEGIN
+	c := a + b;
+	dbms_output.put_line(s||c);
+END;
+</pre>
+
+		<h5 class="py-3" id=""> execute query </h5>
+
+		<p class="py-3"> You can exevute inside mostly sql query inside the procedure but it some limitation to execute. Simpliy you can use mutliple <a href="insert.html#mrow"> Multiple row insert </a> query inside. </p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+	age number;
+BEGIN
+	/*
+		- use normal query inside the unnamed procedure
+	*/
+	INSERT INTO myTable Values(1,21,'lopmudra');
+	INSERT INTO myTable Values(2,18,'sikora');
+	INSERT INTO myTable Values(3,10,'zuiskey');
+	/*
+		- select statement is different
+		- syntax :- SELECT variable INTO column FROM table WHERE condition;
+	*/
+	SELECT age INTO person_age FROM myTable WHERE id = 1;
+
+	dbms_output.put_line(age);
+
+END;
+</pre>
+        <h5 class="py-3" id="exit"> exit when </h5>
+
+		<p class="py-3"> You use exit simple to terminate procedure and it more use full with when it help to set exit at contition. </p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+	i number := 0;
+BEGIN
+	-- i := 2;
+	dbms_output.put_line('first line execute');
+	EXIT WHEN i = 2;
+	dbms_output.put_line('second line execute');
+	EXIT;
+	dbms_output.put_line('third line execute');
+END;
+</pre>
+
+        <h5 class="py-3" id="goto"> goto </h5>
+
+		<p class="py-3"> The goto is jumping keyword that work to terimate control to targeting label it such a danger if you not set exit.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+BEGIN
+	dbms_output.put_line('start');
+	GOTO label1;
+	dbms_output.put_line(' inner ');
+	<< label1 >>
+	dbms_output.put_line('end');
+END;
+</pre>
+
+        <h5 class="py-3" id="if"> if statement </h5>
+
+		<p class="py-3"> if structure is the set to control execution. simple if condiiton is true then execute queries until to if end. It is very useful with <a href="#cursor"> cursor </a> attribute otherwise you use operator or other function like <b>mod();</b> </p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+    age number;
+BEGIN
+    -- select query
+    SELECT age INTO age FROM student WHERE id = 1;
+
+    -- if statement
+	IF age >= 18 THEN
+        dbms_output.put_line('adult');
+    END IF;
+END;
+</pre>
+		
+        <h5 class="py-3" id="ifelse"> ifelse statement </h5>
+
+		<p class="py-3"> if else is simplity like if but it also execute condition if false. simple if condition is ture then execute query esle excute next query. </p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+    age number;
+BEGIN
+    -- select query
+    SELECT age INTO age FROM student WHERE id = 3;
+
+    -- if else statement
+    IF age >= 18 THEN
+        dbms_output.put_line('adult');
+    ELSE
+        dbms_output.put_line('child');
+    END IF;
+END;
+</pre>
+
+		<h5 class="py-3" id=""> nested if else statement </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+    age number;
+BEGIN
+    -- select query
+	SELECT age INTO age FROM student WHERE id = 3;
+
+    -- if else if statement
+    IF age >= 18 THEN
+        dbms_output.put_line('adult');
+    ELSIF age >= 12 THEN  
+        dbms_output.put_line('teen');
+    ELSE
+		dbms_output.put_line('child');
+	END IF;
+END;
+</pre>
+	
+        <h5 class="py-3" id="simpleloop"> simple loop </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+    i number := 0;
+BEGIN
+    -- simple loop
+	LOOP
+		-- select query
+		select age into age from student where id = i++;
+		-- exit when 
+		EXIT WHEN age <> 0;
+	
+	END LOOP;
+
+END;
+</pre>
+	
+        <h5 class="py-3" id="whileloop"> while loop </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+	fname varchar := null;
+	i number := 1;
+BEGIN
+	-- while loop
+	WHILE fname = null LOOP
+	
+		SELECT fname INTO fname FROM studnet WHERE id = i;
+		
+		i := i + 1;
+		
+	END LOOP;
+
+	dbms_output.put_line('stuent name is '||fname);
+END;
+</pre>
+
+		<h5 class="py-3" id="forloop"> for loop </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+BEGIN
+	-- for loop
+	FOR  n IN 1..10 LOOP
+	
+		dbms_output.put_line(n);
+		
+	END LOOP;
+END;
+</pre>
+
+        <h5 class="py-3" id="cursor"> implicit cursor </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+/*
+	default cursor = sql 
+	attribute { %rowcount, %found, %nofound, %isopen }
+*/
+DECLARE
+	rollno student.id%type;
+	-- [ variable_name table_name.column_name%type; ]
+	-- auto set type according to table column
+BEGIN
+	SELECT rollno INTO id FROM student WHERE fname like 'Kajal' or 'kajal';
+
+	-- sql%found : if rowcount not 0 return ture else flase	
+	IF sql%found THEN
+		dbms_output.put_line('Kajal rollno is '||rollno);
+	ELSE
+		dbms_output.put_line('Kajal is bunk');
+	END IF;
+END;	
+</pre>
+
+        <h5 class="py-3" id="cursor"> explicit cursor </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+/*
+	explicet [ cursor ]
+
+	1. CURSOR cursor_name IS select_query; 
+	2. OPEN cursor_name;
+	3. FETCH cursor_name INTO variable_name,...;
+	4. CLOSE cursor_name;
+*/
+DECLARE	
+
+	name t1.navme%type;
+	id t1.name%type;
+	
+	CURSOR crsr IS SELECT * FROM t1 WHERE id = 1;
+	
+BEGIN
+
+	OPEN crsr;
+	
+	FETCH crsr INTO id, name;
+	
+	IF crsr%rowcount THEN
+	
+		dbms_output.put_line(id||' name is '||name);
+	
+	END IF;
+	
+	COLSE crsr;
+
+END;
+</pre>
+
+		<h5 class="py-3" id=""> fetch multiple row </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+/*
+	select all data with cursor
+*/
+DECLARE
+	mrow t1%rowtype;	-- variable_name table_name%rowtype;
+	cursor crsr is select * from t1;
+BEGIN
+	OPEN crsr;
+	
+	LOOP;
+		FETCH crsr INTO mrow;
+		
+		EXIT WHEN crsr%notfound;
+		
+		dbms_output.put_line(mrow.id,mrow.fname);
+	
+	END LOOP;
+	
+	CLOSE crsr;
+
+	dbms_output.put_line('end loop');
+
+END;
+</pre>
+
+        <h5 class="py-3" id="procedure"> procedure </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+/*
+	Stored Named Procedure
+	-	CREATE keyword required
+	-	need name
+	-	store in database
+	-	use in call in side or other time
+*/
+CREATE Procedure dalo(x IN number,y IN varchar2) IS
+BEGIN
+	INSERT INTO t1 VALUES(x,y);
+END dalo;
+/*
+	Named Procedure
+	-	CREATE keyword not required
+	-	need name
+	-	not store in database
+	-	create to call start to end
+*/
+Procedure dikha IS
+DECLARE
+	CURSOR crsr IS SELECT * FROM t1;
+BEGIN
+	FOR mrow IN crsr LOOP;
+		dbms_output.put_line(mrow.id||' - '||mrow.fname);
+	END LOOP;
+END dikha;
+/*
+	Unnamed Procedure
+	-	CREATE keyword not required
+	-	not need name
+	-	not store in database
+	-	not call
+*/
+BEGIN
+	dalo(1,'lusanda');
+	dalo(2,'mayur');
+
+	dikha;
+END;
+</pre>
+
+        <h5 class="py-3" id="function"> function </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+/*
+	Stored Function
+*/
+CREATE Function plus(n1 IN number, n2 IN number) RETURN number IS
+BEGIN
+	RETURN n1 + n2;
+END;
+/*
+	call function
+*/
+BEGIN
+	dbms_output.put_line(plus(5,1));
+END;
+</pre>
+
+        <h5 class="py-3" id="package"> package </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+-- package declare
+CREATE Package Agni AS
+	Procedure likh(x varchar2);
+END Agni;
+-- pacakge body
+CREATE Package BODY Agni AS
+	Procedure likh(x varchar2) IS
+	BEGIN
+		dbms_output.put_line(x);
+	END;
+END Agni;
+/*
+	use of package
+*/
+BEGIN
+	dalo(3,'zoran');
+	dalo(4,'fredish');
+
+	Agni.likh('-- GET RED FOR FIRE PACKAGE --');
+
+	dikha;
+END;
+</pre>
+
+        <h5 class="py-3" id="exception"> exception </h5>
+
+		<p class="py-3">.</p>
+
+        <h6 class="py-3"> Example </h6>
+
+<pre class="pl">
+DECLARE
+	id number;
+	-- handle code error
+	mera_err EXCEPTION;
+	Pragma exception_init(mera_err,00947);
+BEGIN
+	
+	SELECT id INTO id FROM t1 WHERE id = 6;
+
+	dalo(5,'lopez'),(7,'jesika');
+
+EXCEPTION
+	/*
+		named error
+	*/
+	WHEN no_data_found THEN
+		dbms_output.put_line(' kripya - kuchh dale ');
+	WHEN value_error THEN
+		dbms_output.put_line(' kripya - kishi or akar ka dale ');
+	WHEN to_many_rows THEN
+		dbms_output.put_line(' kripya - ekbar me ek nikale ');
+	/*
+		code error
+	*/
+	WHEN mera_err THEN
+		dbms_output.put_line(' kripya - ruk ke dale ');
+	/*
+		unseen error
+	*/
+	WHEN others THEN
+		dbms_output.put_line(' kya dal diya be ');
+END;
+</pre>
+		
+	</div>
+
+	<!-- { script } -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<!-- ( offline ) -->
+	<script src="../../js/bootstrap.bundle.min.js"></script>
+	<script src="../../js/script.js"></script>
+	
+</body>
+  
+</html>
+<!-- THE END -->
