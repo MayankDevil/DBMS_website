@@ -31,6 +31,12 @@ body
 {
     overflow: auto;
 }
+#mother_container
+{
+    display: gird;
+    grid-template-rows: auto auto;
+    overflow: hidden;
+}
 /* HEADER */
 #header
 {
@@ -40,6 +46,11 @@ body
 #container
 {
     height: 93vh;
+}
+#brand
+{
+    font-size: 1rem;
+    font-weight: bold;
 }
 /* ASIDE */
 #aside
