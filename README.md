@@ -1,4 +1,4 @@
-# Clone1
+# Project-2
 
 - update : 14|05|2023
 - status : Active
@@ -16,7 +16,7 @@
 
 ---
 
-> Project-2 "DBMS"
-> This is  Tutorial Website
-> Mission Give Practicle Project in DBMS Subject
+> Project-2 "DBMS".
+> This is  Tutorial Website.
+> Mission Give Practicle Project in DBMS Subject.
 > Vission More than many people visit to learn by it.
