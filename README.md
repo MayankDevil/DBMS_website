@@ -12,7 +12,7 @@
 - Develope & Desgined By Mayank
 - CopyRight By Mayank
 - [url] (https://mayankdevil.github.io/Project-2/)
-- [download] (https://github.com/MayankDevil/Project-2)
+- [download] (https://github.com/MayankDevil/Project-2/archive/refs/heads/main.zip)
 
 ---
 
