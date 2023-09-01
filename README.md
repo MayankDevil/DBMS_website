@@ -28,7 +28,7 @@
 
 - URL : https://mayankdevil.github.io/Project-2/
 
-- Download : https://github.com/MayankDevil/Project-2/archive/refs/heads/main.zip)
+- Download : https://github.com/MayankDevil/Project-2/archive/refs/heads/main.zip
 
 ---
 
