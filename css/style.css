@@ -4,18 +4,20 @@
 -	Designed by Mayank
 -	index.html
 */
-:root
-{
+* {
+    margin:0;
+    padding: 0;
+    font-family:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji";
+    color:var(--black);
+    text-decoration: none;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+:root {
     --lgreen:#b1dfbb;
     --lred:#ed969e;
-}
-.text-lred
-{
-    color:var(--lred);
-}
-.text-lgreen
-{
-    color:var(--lgreen);
 }
 ::-webkit-scrollbar
 {
@@ -27,59 +29,134 @@
     background: var(--dark);
     border-radius: 5px;
 }
-body
+::selection
 {
-    overflow: auto;
+    color:var(--white);
+    background:#343a40;
 }
-#mother_container
+::marker
 {
-    display: gird;
-    grid-template-rows: auto auto;
-    overflow: hidden;
+    color:var(--secondary);
 }
-/* HEADER */
-#header
+#main
 {
-    height: 7vh;
+    display: grid;
+    grid-template-columns:3fr 1fr;
+    max-width:1000px;
+    margin:auto;
 }
-/* CONTAINER */
-#container
-{
-    height: 93vh;
-}
-#brand
-{
-    font-size: 1rem;
-    font-weight: bold;
-}
-/* ASIDE */
+/*
+    aside css ---
+*/
 #aside
 {
-    height: 93vh;
-    overflow: scroll;
+    position: sticky;
+    overflow: hidden;
+    overflow-y: auto;
+    top:0;
+    width: 100%;
+    height: 100vh;
+    padding:2rem  0;
+    background: var(--white);
 }
-#aside a
+#aside > a
 {
-    display:block;
-    padding: 1rem 1rem;
+    display: block;
+    padding:1rem 2rem;
     text-decoration: none;
 }
-#aside a:hover,
-#aside a:active
+#aside > a:hover
 {
-    color:var(--dark);
-    background:var(--light);
+    opacity:0.6;
+    border-left: 2px solid var(--primary);
 }
-/* #searchbar:focus ~ .lead
+/*
+    section css ---
+*/
+
+#header {
+    position: sticky;
+    top:0;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 0 5px;
+    background:#f8f9fa;
+}
+#menu_button {
+    /* margin:0.5rem; */
+    padding: 0.5rem;
+    font-size: 1.5em;
+    background: transparent;
+}
+#menu_button:hover {
+    opacity:0.5;
+}
+/*
+    content css ---
+*/
+#content {
+    padding: 2rem 1rem;
+}
+.text-lred
 {
-    color:#ed969e;
-} */
-/* FRAME */
+    color:var(--lred);
+}
+.text-lgreen
+{
+    color:var(--lgreen);
+}
+
+/*
+    body css ---
+*/
+body
+{
+    height: 100vh;
+    overflow: auto;
+    background: #f8f9fa;
+}
+.container-fluid
+{
+    overflow:hidden;
+    background:#f8f9fa !important;
+}
+.container-fluid::-webkit-scrollbar
+{
+    width:0.5rem;
+    background: transparent !important;
+}
+
+#article
+{
+    display: grid;
+    grid-template-rows: 50px auto;
+    height: 100vh;
+}
+/*
+    frame css -----
+*/
 #frame
 {
-    height: 93vh;
     overflow: scroll;
+    width: 100%;
+    height: 100%;
     border:none;
+}
+#frame::-webkit-scrollbar
+{
+    width:0;
+    background: transparent;
+}
+.form-group
+{
+    margin: -2rem 0 0 0;
+    padding: 1rem;
+}
+#searchbar
+{
+    background: var(--light);
+    border: none;
 }
 /* PAGES */
 .container-fluid
@@ -90,8 +167,14 @@ body
 {
 	font-size:3rem;
 }
+ol,ul
+{
+    margin-left: 1rem;
+    padding: 1rem;
+}
 li
 {
+    display: block;
     line-height: 2rem;
 }
 li::marker
@@ -119,14 +202,12 @@ pre
 mark
 {
     display: block;
-    color:#155724;
-    background: var(--light);
+    font-weight: bold;
 }
 /* pl frame */
 .pl
 {
     color:var(--lgreen);
-    /* background: var(--light); */
 }
 /* ENEITY */
 #strongentity
@@ -182,6 +263,39 @@ mark
 #mtm
 {
     color:var(--info);
+}
+/*
+    footer css ----
+*/
+#footer
+{
+    padding: 5px;
+    font-weight:normal;
+    color: #343a40;
+}
+#footer a
+{
+    display:inline-block !important;
+    padding: 1px;
+}
+/*
+    responsive css ----
+*/
+@media screen and (max-width:600px)
+{
+    #main
+    {
+        grid-template-columns: 1fr !important;
+    }
+    #aside
+    {
+        width: 90%; 
+        margin:auto;
+        position: absolute;
+        z-index: 100%;
+        left:5%;
+        top:10% !important;
+    }
 }
 /* SCREEN : 576PX */
 @media screen and (max-width:576PX)
