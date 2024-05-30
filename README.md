@@ -26,9 +26,9 @@
 
 - CopyRight : { Mayank }
 
-- URL : https://mayankdevil.github.io/Project-2/
+- URL : https://mayankdevil.github.io/DBMS_websie/
 
-- Download : https://github.com/MayankDevil/Project-2/archive/refs/heads/main.zip
+- Download : https://github.com/MayankDevil/DBMS_websie/archive/refs/heads/main.zip
 
 ---
 
